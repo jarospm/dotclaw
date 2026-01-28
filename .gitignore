@@ -1,0 +1,19 @@
+# Instance-specific (credentials, IPs, config)
+local/
+
+# macOS
+.DS_Store
+._*
+
+# Linux
+*~
+
+# Editors
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Logs/temp
+*.log
+*.tmp
