@@ -11,7 +11,10 @@ guides/          # First-time setup walkthroughs
 
 reference/       # Day-to-day operations
   server-commands.md    # systemd, tmux, ufw, SSH tunnels
-  moltbot-structure.md  # File locations, auth, memory, multi-agent
+  moltbot-structure.md  # File locations, config overview
+  moltbot-auth.md       # Authentication and provider setup
+  moltbot-gateway.md    # Gateway service and Control UI
+  moltbot-channels.md   # Telegram and multi-agent setup
 
 local/           # Instance-specific (gitignored)
 ```
