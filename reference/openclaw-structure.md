@@ -30,8 +30,11 @@ File locations and configuration overview. For details see:
 ├── IDENTITY.md                # Bot persona
 ├── USER.md                    # User profile
 ├── SOUL.md                    # Core values/behavior
-└── memory/
-    └── YYYY-MM-DD.md          # Daily logs (auto-appended)
+├── memory/
+│   └── YYYY-MM-DD.md          # Daily logs (auto-appended)
+├── .agents/skills/            # Installed skills (from npx skills add)
+│   └── firecrawl/             # Example: Firecrawl skill
+└── .firecrawl/                # Firecrawl output (gitignored)
 
 ~/.config/systemd/user/        # Systemd user services
 ├── clawdbot-gateway.service              # Main service (managed by Clawdbot)

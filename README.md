@@ -21,7 +21,7 @@ reference/       # Day-to-day operations
 
 tools/           # Individual tool documentation
   bird.md             # X/Twitter CLI (reading tweets, bookmarks)
-  firecrawl.md        # Web fetch fallback (JS-heavy sites)
+  firecrawl.md        # Web search, scrape, map (replaces built-in web tools)
 
 local/           # Instance-specific (gitignored)
 ```

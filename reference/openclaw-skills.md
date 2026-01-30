@@ -92,8 +92,21 @@ systemctl --user restart clawdbot-gateway
 | Skill | Env Vars | How to Get |
 |-------|----------|------------|
 | bird | `AUTH_TOKEN`, `CT0` | Extract from browser cookies on x.com |
+| firecrawl | `FIRECRAWL_API_KEY` | https://firecrawl.dev |
 | gog (Google) | `GOG_CLIENT_ID`, `GOG_CLIENT_SECRET` | Google Cloud Console |
 | himalaya (email) | Configured via `~/.config/himalaya/config.toml` | N/A |
+
+### Skills with Own Config (not systemd)
+
+Some tools store credentials in their own config:
+
+| Tool | Config Location | Notes |
+|------|-----------------|-------|
+| firecrawl CLI | `~/.config/firecrawl-cli/` | `firecrawl login --api-key` |
+
+For these, you may have credentials in two places:
+- Systemd drop-in (for Clawdbot gateway)
+- Tool's own config (for direct CLI use)
 
 ---
 
