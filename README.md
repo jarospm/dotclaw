@@ -19,6 +19,10 @@ reference/       # Day-to-day operations
   openclaw-memory.md     # Memory system and persistence
   openclaw-skills.md     # Skills system and configuration
 
+tools/           # Individual tool documentation
+  bird.md             # X/Twitter CLI (reading tweets, bookmarks)
+  firecrawl.md        # Web fetch fallback (JS-heavy sites)
+
 local/           # Instance-specific (gitignored)
 ```
 
