@@ -1,4 +1,4 @@
-# Moltbot Gateway
+# OpenClaw Gateway
 
 The gateway is the long-running service that connects channels (Telegram, etc.) to agents.
 

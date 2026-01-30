@@ -1,4 +1,4 @@
-# Moltbot Channels
+# OpenClaw Channels
 
 Configuring Telegram and other messaging channels.
 

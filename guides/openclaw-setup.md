@@ -1,6 +1,6 @@
-# Moltbot Setup Guide
+# OpenClaw Setup Guide
 
-First-time installation and configuration of Moltbot on a VPS.
+First-time installation and configuration of OpenClaw on a VPS.
 
 ---
 
@@ -17,7 +17,7 @@ See `../guides/server-setup.md` for base server configuration.
 
 ## Step 1: Install Clawdbot
 
-> **Note:** The npm package `moltbot` is a squatter. The real package is `clawdbot`.
+> **Note:** The npm package `openclaw` is a squatter. The real package is `clawdbot`.
 
 ```bash
 npm install -g clawdbot@latest
@@ -136,6 +136,6 @@ clawdbot models auth paste-token --provider anthropic
 
 ## Resources
 
-- [Official Docs](https://docs.molt.bot/)
-- [GitHub](https://github.com/moltbot/moltbot)
-- [Discord Community](https://discord.gg/moltbot)
+- [Official Docs](https://docs.openclaw.dev/)
+- [GitHub](https://github.com/openclaw/openclaw)
+- [Discord Community](https://discord.gg/openclaw)

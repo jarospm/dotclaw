@@ -1,10 +1,10 @@
-# Moltbot Structure Reference
+# OpenClaw Structure Reference
 
 File locations and configuration overview. For details see:
-- `moltbot-auth.md` — authentication and provider setup
-- `moltbot-gateway.md` — gateway service and Control UI
-- `moltbot-channels.md` — Telegram and multi-agent setup
-- `moltbot-memory.md` — memory system and persistence
+- `openclaw-auth.md` — authentication and provider setup
+- `openclaw-gateway.md` — gateway service and Control UI
+- `openclaw-channels.md` — Telegram and multi-agent setup
+- `openclaw-memory.md` — memory system and persistence
 
 ---
 

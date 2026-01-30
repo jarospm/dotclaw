@@ -1,6 +1,6 @@
-# Moltbot Memory System
+# OpenClaw Memory System
 
-How Moltbot maintains persistent, searchable memory across sessions.
+How OpenClaw maintains persistent, searchable memory across sessions.
 
 ## Context vs Memory
 

@@ -1,21 +1,21 @@
-# dotmolt
+# dotclaw
 
-Personal documentation for running [Moltbot](https://github.com/moltbot/moltbot) on a VPS.
+Personal documentation for running [OpenClaw](https://github.com/openclaw/openclaw) on a VPS.
 
 ## Structure
 
 ```
 guides/          # First-time setup walkthroughs
-  server-setup.md    # VPS setup (Ubuntu, Node, SSH, UFW)
-  moltbot-setup.md   # Moltbot installation & onboarding
+  server-setup.md     # VPS setup (Ubuntu, Node, SSH, UFW)
+  openclaw-setup.md   # OpenClaw installation & onboarding
 
 reference/       # Day-to-day operations
-  server-commands.md    # systemd, tmux, ufw, SSH tunnels
-  moltbot-structure.md  # File locations, config overview
-  moltbot-auth.md       # Authentication and provider setup
-  moltbot-gateway.md    # Gateway service and Control UI
-  moltbot-channels.md   # Telegram and multi-agent setup
-  moltbot-memory.md     # Memory system and persistence
+  server-commands.md     # systemd, tmux, ufw, SSH tunnels
+  openclaw-structure.md  # File locations, config overview
+  openclaw-auth.md       # Authentication and provider setup
+  openclaw-gateway.md    # Gateway service and Control UI
+  openclaw-channels.md   # Telegram and multi-agent setup
+  openclaw-memory.md     # Memory system and persistence
 
 local/           # Instance-specific (gitignored)
 ```
@@ -23,6 +23,6 @@ local/           # Instance-specific (gitignored)
 ## Usage
 
 - **New server?** Start with `guides/server-setup.md`
-- **Installing Moltbot?** Follow `guides/moltbot-setup.md`
+- **Installing OpenClaw?** Follow `guides/openclaw-setup.md`
 - **Managing existing bot?** See `reference/`
 - **Your specific config?** Check `local/`

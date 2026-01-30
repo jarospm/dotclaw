@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-Documentation repo for running Moltbot (personal AI assistant) on a VPS. No code — just markdown guides and references.
+Documentation repo for running OpenClaw (personal AI assistant) on a VPS. No code — just markdown guides and references.
 
 ## Architecture
 
-- **guides/** — First-time setup walkthroughs (server-setup, moltbot-setup)
+- **guides/** — First-time setup walkthroughs (server-setup, openclaw-setup)
 - **reference/** — Day-to-day operations (commands, file structure)
 - **local/** — Instance-specific config (gitignored) — IPs, credentials, bot settings
 

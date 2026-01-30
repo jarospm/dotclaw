@@ -1,6 +1,6 @@
-# Moltbot Authentication
+# OpenClaw Authentication
 
-How Moltbot authenticates with AI providers (Anthropic).
+How OpenClaw authenticates with AI providers (Anthropic).
 
 ---
 

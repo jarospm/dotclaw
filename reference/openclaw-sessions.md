@@ -1,4 +1,4 @@
-# Moltbot Sessions
+# OpenClaw Sessions
 
 A session is a conversation transcript with history — like a chat thread that persists.
 
