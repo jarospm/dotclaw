@@ -4,6 +4,19 @@ Comprehensive web tool for search, scraping, mapping, and research. Replaces bui
 
 ---
 
+## Skill Type
+
+**Custom** — installed separately via `npx skills add firecrawl/cli`.
+
+| Component | Location |
+|-----------|----------|
+| Skill (SKILL.md) | `~/clawd/.agents/skills/firecrawl/SKILL.md` |
+| CLI binary | `~/.npm-global/bin/firecrawl` |
+| CLI credentials | `~/.config/firecrawl-cli/` |
+| Gateway credentials | `~/.config/systemd/user/clawdbot-gateway.service.d/firecrawl.conf` |
+
+---
+
 ## What It Does
 
 - **Search** — Web, news, image search with optional scraping

@@ -19,9 +19,9 @@ reference/       # Day-to-day operations
   openclaw-memory.md     # Memory system and persistence
   openclaw-skills.md     # Skills system and configuration
 
-tools/           # Individual tool documentation
-  bird.md             # X/Twitter CLI (reading tweets, bookmarks)
-  firecrawl.md        # Web search, scrape, map (replaces built-in web tools)
+skills/          # Individual skill documentation
+  bird.md             # X/Twitter (bundled skill + CLI)
+  firecrawl.md        # Web research (custom skill + CLI)
 
 local/           # Instance-specific (gitignored)
 ```
@@ -31,4 +31,5 @@ local/           # Instance-specific (gitignored)
 - **New server?** Start with `guides/server-setup.md`
 - **Installing OpenClaw?** Follow `guides/openclaw-setup.md`
 - **Managing existing bot?** See `reference/`
+- **Setting up a skill?** See `skills/`
 - **Your specific config?** Check `local/`

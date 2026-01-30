@@ -4,6 +4,18 @@ Fast CLI for reading X/Twitter content via GraphQL + cookie auth.
 
 ---
 
+## Skill Type
+
+**Bundled** — comes with Clawdbot, no separate skill install needed.
+
+| Component | Location |
+|-----------|----------|
+| Skill (SKILL.md) | `~/.npm-global/lib/node_modules/clawdbot/skills/bird/SKILL.md` |
+| CLI binary | `~/.npm-global/bin/bird` |
+| Credentials | `~/.config/systemd/user/clawdbot-gateway.service.d/bird.conf` |
+
+---
+
 ## What It Does
 
 - Read tweets, threads, replies
