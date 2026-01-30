@@ -15,6 +15,7 @@ reference/       # Day-to-day operations
   moltbot-auth.md       # Authentication and provider setup
   moltbot-gateway.md    # Gateway service and Control UI
   moltbot-channels.md   # Telegram and multi-agent setup
+  moltbot-memory.md     # Memory system and persistence
 
 local/           # Instance-specific (gitignored)
 ```

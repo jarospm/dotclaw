@@ -4,6 +4,7 @@ File locations and configuration overview. For details see:
 - `moltbot-auth.md` — authentication and provider setup
 - `moltbot-gateway.md` — gateway service and Control UI
 - `moltbot-channels.md` — Telegram and multi-agent setup
+- `moltbot-memory.md` — memory system and persistence
 
 ---
 
@@ -42,16 +43,6 @@ Main config: `~/.clawdbot/clawdbot.json`
 - `agents.main.model` — e.g., `anthropic/claude-opus-4-5`
 - `agents.defaults.workspace` — agent working directory
 - `agents.defaults.sandbox.mode` — `"non-main"` for Docker isolation
-
----
-
-## Memory
-
-Automatic persistence:
-
-- **Daily logs** (`memory/YYYY-MM-DD.md`) — loaded at session start
-- **Long-term** (`MEMORY.md`) — persists forever, curated
-- **Auto-flush** — writes before context compaction
 
 ---
 
