@@ -1,143 +1,190 @@
-# Firecrawl — Web Fetch Fallback
+# Firecrawl — Web Research, Search, Scrape, Map
 
-Hosted service for extracting content from JS-heavy and anti-bot protected websites.
+Comprehensive web tool for search, scraping, mapping, and research. Replaces built-in web_search and enhances web_fetch.
 
 ---
 
 ## What It Does
 
-- Extracts readable content from web pages
+- **Search** — Web, news, image search with optional scraping
+- **Scrape** — Extract content from any URL (handles JS, anti-bot)
+- **Map** — Discover all URLs on a website
+- **Crawl** — Scrape entire sites
+
+**Why use over built-in tools:**
 - Handles JavaScript-rendered content
-- Bypasses basic anti-bot protections
-- Returns clean markdown/text
-
-**Used as:** Fallback for `web_fetch` when local Readability extraction fails.
-
----
-
-## How It Works
-
-```
-web_fetch request
-        ↓
-   Readability (local)
-        ↓
-   [Success?] → Return content
-        ↓ [Fail]
-   Firecrawl API
-        ↓
-   Return content
-```
-
-Firecrawl runs headless browsers in the cloud to render pages fully before extracting content.
+- Bypasses anti-bot protections
+- Returns LLM-optimized markdown
+- Search + scrape in one command
+- No separate Brave API key needed
 
 ---
 
 ## Installation
 
-**No CLI to install** — Firecrawl is a cloud service accessed via API.
+**CLI:**
+```bash
+npm install -g firecrawl-cli
+```
 
-The `web_fetch` tool in Clawdbot automatically uses it when:
-1. API key is configured
-2. Local Readability extraction fails
+**Skill (for agents):**
+```bash
+npx skills add firecrawl/cli -y
+```
+
+Installed to: `~/clawd/.agents/skills/firecrawl/`
+
+**Verify:**
+```bash
+firecrawl --status
+```
 
 ---
 
-## Configuration
+## Authentication
 
 ### API Key
 
 Get from: https://firecrawl.dev (has free tier)
 
-### Where Credentials Live
+### Two places credentials can live:
 
-Systemd drop-in:
+**1. Firecrawl's own config** (for CLI direct use):
+```bash
+firecrawl login --api-key fc-YOUR-KEY
+# Stored in: ~/.config/firecrawl-cli/
+```
+
+**2. Systemd drop-in** (for Clawdbot's web_fetch fallback):
 ```
 ~/.config/systemd/user/clawdbot-gateway.service.d/firecrawl.conf
 ```
 
-Contents:
-```ini
-[Service]
-Environment="FIRECRAWL_API_KEY=fc-your-key-here"
-```
+Both can coexist — CLI uses its own config, Clawdbot uses the env var.
 
-### Updating Credentials
+---
+
+## Common Commands
+
+### Search
 
 ```bash
-# Edit the file
-nano ~/.config/systemd/user/clawdbot-gateway.service.d/firecrawl.conf
+# Basic search
+firecrawl search "your query" --limit 10
 
-# Reload and restart
-systemctl --user daemon-reload
-systemctl --user restart clawdbot-gateway
+# Search + scrape results
+firecrawl search "AI agents" --scrape -o .firecrawl/search-ai.json --json
+
+# News search
+firecrawl search "tech news" --sources news --tbs qdr:d  # past day
+
+# Image search
+firecrawl search "landscapes" --sources images
+
+# Filter by category
+firecrawl search "python tutorial" --categories github
+```
+
+### Scrape
+
+```bash
+# Basic scrape
+firecrawl scrape https://example.com -o .firecrawl/example.md
+
+# Main content only (no nav/footer)
+firecrawl scrape https://example.com --only-main-content
+
+# Wait for JS to render
+firecrawl scrape https://spa-site.com --wait-for 3000
+
+# Multiple formats
+firecrawl scrape https://example.com --format markdown,links -o .firecrawl/example.json
+```
+
+### Map
+
+```bash
+# All URLs on a site
+firecrawl map https://example.com -o .firecrawl/urls.txt
+
+# Filter by keyword
+firecrawl map https://example.com --search "blog"
+
+# Include subdomains
+firecrawl map https://example.com --include-subdomains
 ```
 
 ---
 
-## Usage
+## File Organization
 
-You don't call Firecrawl directly. It's used automatically by `web_fetch`:
+The skill creates a `.firecrawl/` folder for results:
 
 ```
-Agent: web_fetch("https://some-js-heavy-site.com")
-        ↓
-Clawdbot: Tries Readability → fails
-        ↓
-Clawdbot: Tries Firecrawl → succeeds
-        ↓
-Agent: Gets clean markdown content
+~/clawd/.firecrawl/
+├── search-query.json
+├── example.com.md
+├── urls.txt
+└── scratchpad/     # Temporary scripts
+```
+
+Add to `.gitignore`:
+```
+.firecrawl/
 ```
 
 ---
 
-## When Firecrawl Helps
+## Skill Location
 
-| Site Type | Readability | Firecrawl |
-|-----------|-------------|-----------|
-| Static HTML blogs | ✅ Works | Not needed |
-| JS-rendered SPAs | ❌ Fails | ✅ Works |
-| Anti-bot protected | ❌ Fails | ✅ Usually works |
-| Login required | ❌ Fails | ❌ Fails (use browser) |
+```
+~/clawd/.agents/skills/firecrawl/
+├── SKILL.md           # Full documentation
+└── rules/
+    └── install.md     # Auth instructions
+```
 
 ---
 
-## Clawdbot Config (Optional)
+## How Agent Uses It
 
-Can also configure in `~/.clawdbot/clawdbot.json`:
+The skill tells the agent to:
+1. Prefer `firecrawl` over `web_fetch` and `web_search`
+2. Save output to files (not flood context)
+3. Use grep/head to read results incrementally
+4. Run multiple scrapes in parallel
 
-```json
-{
-  "tools": {
-    "web": {
-      "fetch": {
-        "firecrawl": {
-          "enabled": true,
-          "apiKey": "fc-your-key-here",
-          "onlyMainContent": true,
-          "timeoutSeconds": 60
-        }
-      }
-    }
-  }
-}
+---
+
+## Parallel Scraping
+
+```bash
+# Run multiple scrapes at once
+firecrawl scrape https://site1.com -o .firecrawl/1.md &
+firecrawl scrape https://site2.com -o .firecrawl/2.md &
+firecrawl scrape https://site3.com -o .firecrawl/3.md &
+wait
 ```
 
-But systemd drop-in is preferred (keeps secrets out of config file).
+Check concurrency limit with `firecrawl --status`
 
 ---
 
 ## Troubleshooting
 
-**Firecrawl not being used:**
+**"Not authenticated":**
 ```bash
-# Check if env var is loaded
-systemctl --user cat clawdbot-gateway.service | grep FIRECRAWL
+firecrawl login --api-key fc-YOUR-KEY
 ```
 
-**Still failing on some sites:**
-- Some sites block even Firecrawl
-- Use the browser tool for these: `clawdbot browser open <url>`
+**Check credits:**
+```bash
+firecrawl --status
+```
+
+**Rate limited:**
+- Check concurrency limit in status
+- Reduce parallel jobs
 
 ---
 
@@ -145,4 +192,5 @@ systemctl --user cat clawdbot-gateway.service | grep FIRECRAWL
 
 - Service: https://firecrawl.dev
 - Docs: https://docs.firecrawl.dev
-- Pricing: Free tier available, paid for higher volume
+- CLI Docs: https://docs.firecrawl.dev/sdks/cli
+- Skill: `~/clawd/.agents/skills/firecrawl/SKILL.md`
