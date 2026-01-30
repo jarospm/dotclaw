@@ -10,12 +10,14 @@ guides/          # First-time setup walkthroughs
   openclaw-setup.md   # OpenClaw installation & onboarding
 
 reference/       # Day-to-day operations
-  server-commands.md     # systemd, tmux, ufw, SSH tunnels
+  server-commands.md     # tmux, ufw, SSH tunnels
+  systemd.md             # How systemd works with Clawdbot (important!)
   openclaw-structure.md  # File locations, config overview
   openclaw-auth.md       # Authentication and provider setup
   openclaw-gateway.md    # Gateway service and Control UI
   openclaw-channels.md   # Telegram and multi-agent setup
   openclaw-memory.md     # Memory system and persistence
+  openclaw-skills.md     # Skills system and configuration
 
 local/           # Instance-specific (gitignored)
 ```

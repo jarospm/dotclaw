@@ -14,7 +14,9 @@ systemctl --user restart clawdbot-gateway
 systemctl --user stop clawdbot-gateway
 ```
 
-See `server-commands.md` for full systemd setup.
+See:
+- `systemd.md` — How systemd works, drop-in files, adding skill credentials
+- `openclaw-skills.md` — Skills system and configuration
 
 ---
 

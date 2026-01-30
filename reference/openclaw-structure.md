@@ -1,10 +1,12 @@
 # OpenClaw Structure Reference
 
 File locations and configuration overview. For details see:
+- `systemd.md` — how systemd works with Clawdbot
 - `openclaw-auth.md` — authentication and provider setup
 - `openclaw-gateway.md` — gateway service and Control UI
 - `openclaw-channels.md` — Telegram and multi-agent setup
 - `openclaw-memory.md` — memory system and persistence
+- `openclaw-skills.md` — skills system and configuration
 
 ---
 
@@ -30,6 +32,11 @@ File locations and configuration overview. For details see:
 ├── SOUL.md                    # Core values/behavior
 └── memory/
     └── YYYY-MM-DD.md          # Daily logs (auto-appended)
+
+~/.config/systemd/user/        # Systemd user services
+├── clawdbot-gateway.service              # Main service (managed by Clawdbot)
+└── clawdbot-gateway.service.d/           # Drop-ins (your customizations)
+    └── *.conf                            # Skill credentials, env vars
 ```
 
 ---

@@ -66,6 +66,8 @@ sudo ufw deny 22/tcp
 
 ## Service Management (systemd)
 
+Basic commands:
+
 ```bash
 # Check status
 systemctl --user status <service-name>
@@ -82,6 +84,8 @@ systemctl --user stop <service-name>
 # Enable lingering (keep services after logout)
 loginctl enable-linger $USER
 ```
+
+**For Clawdbot-specific systemd usage** (drop-ins, adding credentials for skills, etc.), see `systemd.md`.
 
 ---
 
