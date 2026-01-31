@@ -55,6 +55,84 @@ How OpenClaw maintains persistent, searchable memory across sessions.
 
 **Writing** — no dedicated tool; uses standard `write`/`edit` tools since memory is just Markdown.
 
+## Semantic Search Setup
+
+Semantic search requires an **embedding provider** to convert text into vectors. Without one, `memory_search` won't work.
+
+### Supported Providers
+
+| Provider | Model | Notes |
+|----------|-------|-------|
+| **OpenAI** | `text-embedding-3-small` | Recommended. Cheap (~$0.02/1M tokens), fast, good quality |
+| **Google** | Gemini embeddings | Alternative if you already have Gemini keys |
+| **Local** | GGUF models via node-llama-cpp | No API costs, requires local model file |
+
+### Adding an OpenAI Key (Recommended)
+
+1. Get an API key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+
+2. Add it to Clawdbot:
+   ```bash
+   clawdbot models auth paste-token --provider openai
+   # Paste your key when prompted
+   ```
+
+3. Verify setup:
+   ```bash
+   clawdbot memory status
+   ```
+   Should show `Provider: openai` and `Vector: ready`
+
+4. Index your memory files:
+   ```bash
+   clawdbot memory index
+   ```
+
+### Checking Status
+
+```bash
+clawdbot memory status
+```
+
+Output when working:
+```
+Memory Search (main)
+Provider: openai (requested: openai)
+Model: text-embedding-3-small
+Indexed: 6/6 files · 23 chunks
+Vector: ready
+```
+
+Output when missing API key:
+```
+No API key found for provider "openai".
+```
+
+### Troubleshooting: Batch API Issues
+
+OpenAI's Batch API (used by default for bulk indexing) can get stuck on some accounts. If indexing hangs, disable batch mode:
+
+```bash
+# In clawdbot.json, add:
+{
+  "agents": {
+    "defaults": {
+      "memorySearch": {
+        "provider": "openai",
+        "model": "text-embedding-3-small",
+        "remote": {
+          "batch": {
+            "enabled": false
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+Then restart the gateway and re-run `clawdbot memory index`.
+
 ## How Indexing Works
 
 1. File saved → file watcher detects change (1.5s debounce)
