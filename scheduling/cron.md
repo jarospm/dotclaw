@@ -61,6 +61,29 @@ For reminders that need to reach you immediately:
 }
 ```
 
+## wakeMode (for isolated sessions)
+
+Isolated jobs **always post a summary to main session** after completion. The `wakeMode` controls what happens next:
+
+| wakeMode | Summary posted | Main session |
+|----------|----------------|--------------|
+| `next-heartbeat` (default) | Immediately | Waits for next scheduled heartbeat to see it |
+| `now` | Immediately | Immediately triggered to run (sees the summary right away) |
+
+**What this means:**
+- The summary is always posted immediately to main — `wakeMode` doesn't change that
+- `wakeMode` controls whether main session **wakes up to react** to the summary
+- For push notifications with `deliver: true`, `wakeMode` usually doesn't matter — output goes directly to Telegram/etc, and the summary in main is just a log entry
+
+**When `wakeMode: "now"` matters:**
+- You want the main session to chain actions based on the cron result
+- Example: Cron fetches data → posts summary → main session immediately analyzes it
+
+**When `wakeMode: "next-heartbeat"` is fine:**
+- Cron delivers output directly to a channel
+- Summary in main is just for your records
+- No follow-up action needed
+
 ## CLI Commands
 
 ```bash
