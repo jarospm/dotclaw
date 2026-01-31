@@ -5,31 +5,43 @@ Personal documentation for running [OpenClaw](https://github.com/openclaw/opencl
 ## Structure
 
 ```
-guides/          # First-time setup walkthroughs
-  server-setup.md     # VPS setup (Ubuntu, Node, SSH, UFW)
-  openclaw-setup.md   # OpenClaw installation & onboarding
+core/            # OpenClaw fundamentals
+  sessions.md         # Session types, context, compaction
+  memory.md           # Memory system and persistence
+  auth.md             # Authentication and provider setup
+  channels.md         # Telegram and multi-channel setup
+  gateway.md          # Gateway service and Control UI
+  skills.md           # Skills system and configuration
+  structure.md        # File locations, config overview
 
-reference/       # Day-to-day operations
-  server-commands.md     # tmux, ufw, SSH tunnels
-  systemd.md             # How systemd works with Clawdbot (important!)
-  openclaw-structure.md  # File locations, config overview
-  openclaw-auth.md       # Authentication and provider setup
-  openclaw-gateway.md    # Gateway service and Control UI
-  openclaw-channels.md   # Telegram and multi-agent setup
-  openclaw-memory.md     # Memory system and persistence
-  openclaw-skills.md     # Skills system and configuration
+scheduling/      # Time-based features
+  heartbeat.md        # Periodic wake-ups, HEARTBEAT.md
+  cron.md             # Scheduled jobs, push notifications
 
-skills/          # Individual skill documentation
+server/          # Infrastructure
+  commands.md         # tmux, ufw, SSH tunnels
+  systemd.md          # How systemd works with Clawdbot
+
+skills/          # CLI tools
   bird.md             # X/Twitter (bundled skill + CLI)
   firecrawl.md        # Web research (custom skill + CLI)
 
-local/           # Instance-specific (gitignored)
+integrations/    # External services
+  moltbook.md         # Agent social network
+
+guides/          # First-time setup walkthroughs
+  server-setup.md     # VPS setup (Ubuntu, Node, SSH, UFW)
+  openclaw-setup.md   # OpenClaw installation & onboarding
 ```
 
-## Usage
+## Quick Links
 
-- **New server?** Start with `guides/server-setup.md`
-- **Installing OpenClaw?** Follow `guides/openclaw-setup.md`
-- **Managing existing bot?** See `reference/`
-- **Setting up a skill?** See `skills/`
-- **Your specific config?** Check `local/`
+| Want to... | Go to |
+|------------|-------|
+| Understand sessions | `core/sessions.md` |
+| Set up reminders | `scheduling/cron.md` |
+| Configure heartbeat | `scheduling/heartbeat.md` |
+| Add a skill | `core/skills.md` |
+| Use bird/X | `skills/bird.md` |
+| Use Moltbook | `integrations/moltbook.md` |
+| Debug systemd | `server/systemd.md` |
